@@ -1,0 +1,22 @@
+{
+  "name": "homekit-fan-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vbuyakov/homekit-fan-proxy.git"
+  },
+  "author": "Viktor Bu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vbuyakov/homekit-fan-proxy/issues"
+  },
+  "homepage": "https://github.com/vbuyakov/homekit-fan-proxy#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
