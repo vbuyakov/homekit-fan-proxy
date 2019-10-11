@@ -1,6 +1,7 @@
+const conf = require('./config')
 const express = require('express')
 const app = express()
-const port = 3000
+
 
 app.get('/', (req, res) => {
     let name = req.query.name;
@@ -11,4 +12,6 @@ app.get('/', (req, res) => {
     }
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.use(require('./routes'))
+
+app.listen(conf.port, () => console.log(`Example app listening on port ${conf.port}!`))
