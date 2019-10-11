@@ -31,6 +31,13 @@ CREATE TABLE settings (
     lamp_status_url text default '',
     termometr_url text DEFAULT ''
 );
+insert into settings (
+   fan_on_url, fan_off_url, fan_status_url, lamp_on_url, lamp_off_url, lamp_status_url, termometr_url
+) values 
+('','','','','','','');
+
+select fan_on_url as fanOnUrl from settings;
+
 
 CREATE TABLE currentState (
     last_mode int default 0 -- 1 - fan on, 2 - schedule on   

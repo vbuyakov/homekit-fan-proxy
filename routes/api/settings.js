@@ -17,7 +17,6 @@ router.get('/', function(req,res,next) {
             res.status(500).json({err});
         }
         console.log('vDBG', rows[0]);
-        
     })
     return res.json({lampOnUrl:'http://111.111.111.1/on'})
 })
