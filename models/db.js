@@ -1,15 +1,10 @@
-function pascalToUnderscore(s) {
-    return s.replace(/\.?([A-Z])/g, function (x, y) { return "_" + y.toLowerCase() }).replace(/^_/, "");
-}
+const sqlite3 = require('sqlite3').verbose()
 
-function uderscoreToPascal(s) {
-    return s.replace(
-        /([-_][a-z])/g,
-        (group) => group.toUpperCase()
-            .replace('-', '')
-            .replace('_', '')
-    );
-}
+var db = new sqlite3.Database('./db/fans.db', (err) => {
+    if (err) {
+      console.error(err.message);
+    }
+    console.log('Connected to the fans database.');
+  });
 
-module.exports.pascalToUnderscore = pascalToUnderscore
-module.exports.uderscoreToPascal = uderscoreToPascal
+module.exports =  db;  

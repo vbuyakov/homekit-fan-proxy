@@ -1,24 +1,18 @@
 var router = require('express').Router()
+var settings = require('../../models/settings')
 
-const sqlite3 = require('sqlite3').verbose()
+router.get('/', function (req, res, next) {
+  settings.getSettings().then((result) => {
+    return res.json(result);
+  })
+    .catch(next);
+})
 
-let db = new sqlite3.Database('./db/fans.db', (err) => {
-  if (err) {
-    console.error(err.message);
-  }
-  console.log('Connected to the fans database.');
-});
-
-router.get('/', function(req,res,next) {
-    let sql = 'select * from settings';
-    db.all(sql, [], (err, rows) => {
-        if(err) {
-            console.log('vDBG', 'error while get settings');
-            res.status(500).json({err});
-        }
-        console.log('vDBG', rows[0]);
-    })
-    return res.json({lampOnUrl:'http://111.111.111.1/on'})
+router.post('/', function (req, res, next) {
+  settings.saveSettings(req.body).then((result) => {
+    return res.status(202).json({})
+  })
+    .catch(next);
 })
 
 module.exports = router

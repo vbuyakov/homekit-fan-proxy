@@ -29,12 +29,12 @@ CREATE TABLE settings (
     lamp_on_url text default '',
     lamp_off_url text default '',
     lamp_status_url text default '',
-    termometr_url text DEFAULT ''
+    termometer_url text DEFAULT ''
 );
 insert into settings (
-   fan_on_url, fan_off_url, fan_status_url, lamp_on_url, lamp_off_url, lamp_status_url, termometr_url
+   fan_on_url, fan_off_url, fan_status_url, lamp_on_url, lamp_off_url, lamp_status_url, termometer_url
 ) values 
-('','','','','','','');
+('1','2','3','4','5','6','7');
 
 select fan_on_url as fanOnUrl from settings;
 

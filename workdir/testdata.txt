@@ -1,0 +1,11 @@
+"Content-Type", "application/json; utf-8"
+
+{
+"fanOnUrl": "http://192.168.0.88/fan-on",
+"fanOffUrl": "http://192.168.0.88/fan-off",
+"fanStatusUrl": "http://192.168.0.88/fan-status",
+"lampOnUrl": "http://192.168.0.88/lamp-on",
+"lampOffUrl": "http://192.168.0.88/lamp-off",
+"lampStatusUrl": "http://192.168.0.88/lamp-status",
+"termometerUrl": "http://192.168.0.88/termometer"
+} 
