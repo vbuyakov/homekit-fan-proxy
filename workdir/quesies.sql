@@ -1,44 +1,35 @@
 drop table schedule;
 create table schedule 
 (
-    time_from_h int, 
-    time_from_m int, 
-    time_to_h int, 
-    time_to_m int, 
-    run int default 0, 
-    sleep int default 0, 
+    from_h int, 
+    to_h int,
+    start_period  int DEFAULT 0, -- start every minutes
+    working_period int default 0,  --work minutes after start
     use_lamp int default 1, 
-    lamp_corelation  int default 0, 
-    shutter_all int default 0, 
-    shutter_1 int default 100, 
-    shutter_2 int default 100, 
-    shutter_3 int default 100,
+    lamp_corelation  int default 0, -- offset for lamp if it set fan start after lamp  
     temp_mode int DEFAULT 0 -- if not 0 select mode
 );
 
 insert into schedule 
-(time_from_h, time_from_m, time_to_h, time_to_m, run, sleep, use_lamp, lamp_corelation, shutter_all, shutter_1, shutter_2, shutter_3, temp_mode)
-values (0,0,0,0,60,0,1,0,0,100,100,100, 0);
+(from_h, to_h, start_period, working_period, use_lamp, lamp_corelation, shutter_n1, shutter_n2, shutter_n3, temp_mode)
+values (0,0,0,0,0,0,0,90,90,0);
 
 
-DROP TABLE settings;
-CREATE TABLE settings (
-    fan_on_url text default '',
-    fan_off_url text default '',
-    fan_status_url text default '',
-    lamp_on_url text default '',
-    lamp_off_url text default '',
-    lamp_status_url text default '',
-    termometer_url text DEFAULT ''
-);
-insert into settings (
-   fan_on_url, fan_off_url, fan_status_url, lamp_on_url, lamp_off_url, lamp_status_url, termometer_url
-) values 
-('1','2','3','4','5','6','7');
-
-select fan_on_url as fanOnUrl from settings;
+insert into schedule 
+(from_h, to_h, start_period, working_period, use_lamp, lamp_corelation, shutter_n1, shutter_n2, shutter_n3, temp_mode)
+values (1,2,30,10,0,0,0,0,90,0);
 
 
 CREATE TABLE currentState (
     last_mode int default 0 -- 1 - fan on, 2 - schedule on   
+)
+
+create TABLE shutters_schedule (
+        from_h int, 
+        from_m int, 
+        to_h int,
+        to_m int,
+        shutter_n1 int default 0, -- input stream regulator 0 - max stream
+        shutter_n2 int default 90, -- ou
+        shutter_n3 int default 90,
 )

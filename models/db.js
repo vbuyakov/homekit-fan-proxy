@@ -1,10 +1,22 @@
-const sqlite3 = require('sqlite3').verbose()
+const Database = require('sqlite-async')
 
-var db = new sqlite3.Database('./db/fans.db', (err) => {
-    if (err) {
-      console.error(err.message);
+
+class DbConn {
+  constructor() {
+  }
+
+  async getCon() {
+    if (this.db) {
+      console.log('vDBG', 'resolve null ??? ');
+      
+      return Promise.resolve(this.db);
     }
-    console.log('Connected to the fans database.');
-  });
+  
+    this.db = await Database.open('./db/fans.db')
+    return Promise.resolve(this.db);
+  }
+}
 
-module.exports =  db;  
+
+
+module.exports = new DbConn();

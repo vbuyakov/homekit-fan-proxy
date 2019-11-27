@@ -1,5 +1,5 @@
 var router = require('express').Router()
 
-router.use('/settings', require('./settings'))
+router.use('/schedule', require('./schedule'))
 
 module.exports = router
