@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "viktor",
+    "password": "Ch7887aa",
+    "database": "air_sys1",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "viktor",
+    "password": "Ch7887aa",
+    "database": "air_sys1",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "viktor",
+    "password": "Ch7887aa",
+    "database": "air_sys1",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  }
+}
