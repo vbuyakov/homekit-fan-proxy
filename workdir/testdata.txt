@@ -1,1 +1,0 @@
-use mysql; drop database air_sys1; create database air_sys1; use air_sys1;
