@@ -40,17 +40,12 @@ class Schedule {
         if (!rowid) {
             try {
                 let res = await this.db.run(`insert into schedule (
-                        from_h, to_h, start_period, working_period, use_lamp, lamp_corelation, shutter_1, shutter_2, shutter_3, temp_mode
-               ) values  (?,?,?,?,?,?,?,?,?,?)`, [
+                        from_h, to_h, start_period, working_period, temp_mode
+               ) values  (?,?,?,?,?)`, [
                     data['from_h'],
                     data['to_h'],
                     data['start_period'],
                     data['working_period'],
-                    data['use_lamp'],
-                    data['lamp_corelation'],
-                    data['shutter_1'],
-                    data['shutter_2'],
-                    data['shutter_3'],
                     data['temp_mode']
                 ])
                 rowid = res.lastID;
@@ -64,11 +59,6 @@ class Schedule {
                     to_h = ?, 
                     start_period = ?,
                     working_period = ?,
-                    use_lamp = ?,
-                    lamp_corelation = ?,
-                    shutter_1 = ?,
-                    shutter_2 = ?,
-                    shutter_3 = ?,
                     temp_mode = ?
                     WHERE rowid = ?`,
                     [
@@ -76,11 +66,6 @@ class Schedule {
                         data['to_h'],
                         data['start_period'],
                         data['working_period'],
-                        data['use_lamp'],
-                        data['lamp_corelation'],
-                        data['shutter_1'],
-                        data['shutter_2'],
-                        data['shutter_3'],
                         data['temp_mode'],
                         rowid
                     ])
