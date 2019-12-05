@@ -2,7 +2,12 @@ var router = require('express').Router()
 var db = require('../../models')
 
 router.get('/', function (req, res, next) {
-   db.Period.findAll().then(result => {
+   db.Period.findAll({
+    order: [
+      ['fromH', 'ASC'],
+      ['toH', 'ASC'],
+    ],
+   }).then(result => {
     return res.json(result)
    })
    .catch(next)

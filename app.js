@@ -22,14 +22,20 @@ uiApp.listen(conf.uiAppPort, () => console.log(`Example uiApp listening on port 
 
 
 function logErrors(err, req, res, next) {
-    console.log('vDBG ERR::', err);
+   // console.log('vDBG ERR::', err);
     next(err)
 }
 
 function clientErrorHandler (err, req, res, next) {
-    let errorDetails = err.errorDetails || null
-    let errorMsg = err.errorMsg || 'Something failed!';
-    res.status(500).send({ errorMsg, errorDetails })
+    let errorDetails =  null
+    let errorMsg = 'Something failed!'
+    let errors = []
+    if (err.name && err.name === 'SequelizeValidationError') {
+        err.errors.forEach(error => {
+            errors.push(error.message);
+        })
+    }
+    res.status(500).send({ errorMsg, errorDetails, errors })
 }
 
 

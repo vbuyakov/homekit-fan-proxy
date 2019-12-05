@@ -9,7 +9,6 @@ console.log('vDBG', period);
 
 }
 
-
 async function addFanTask() {
     //const periods = await db.Period.findByPk(1);
     //const fanProfiles = await db.FanProfile.findByPk(1);
